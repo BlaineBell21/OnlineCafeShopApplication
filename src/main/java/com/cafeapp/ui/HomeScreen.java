@@ -3,7 +3,6 @@ package com.cafeapp.ui;
 import com.cafeapp.enums.menus.MainMenuOption;
 import com.cafeapp.utils.InputHelper;
 
-import static com.cafeapp.utils.Console.invalidOption;
 
 public class HomeScreen {
     public static void welcomeScreen(){
@@ -30,7 +29,8 @@ public class HomeScreen {
     }
 
     public static void homeScreenOptions(MainMenuOption choice){
-        if (invalidOption(choice)){
+        if(choice == null){
+            System.out.println("Invalid Option. Please try again.");
             return;
         }
         while (true){
@@ -41,7 +41,6 @@ public class HomeScreen {
                     return;
                 }
             }
-
         }
     }
 }
