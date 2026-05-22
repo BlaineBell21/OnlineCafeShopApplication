@@ -1,16 +1,22 @@
 package com.cafeapp.enums;
 
 public enum DrinkSize {
-    SMALL("Small",3.50),
-    MEDIUM("Medium",9),
-    LARGE("Large",8.50);
+    SMALL(1,"Small",3.50),
+    MEDIUM(2,"Medium",9),
+    LARGE(3,"Large",8.50);
 
+    private final int code;
     private final double baseCost;
     private final String drinkSize;
 
-    DrinkSize(String drinkSize, double baseCost){
+    DrinkSize(int code, String drinkSize, double baseCost){
+        this.code = code;
         this.baseCost = baseCost;
         this.drinkSize = drinkSize;
+    }
+
+    public int getCode() {
+        return code;
     }
 
     public double getBaseCost(){
