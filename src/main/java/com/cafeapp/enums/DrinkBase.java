@@ -5,7 +5,7 @@ import com.cafeapp.interfaces.Displayable;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum DrinkType implements Displayable {
+public enum DrinkBase implements Displayable {
     LATTE(1,"Latte"),
     ESPRESSO(2,"Espresso"),
     BLACK_TEA(3,"Black Tea"),
@@ -14,7 +14,7 @@ public enum DrinkType implements Displayable {
     private final int code;
     private final String label;
 
-    DrinkType(int code, String name) {
+    DrinkBase(int code, String name) {
         this.code = code;
         this.label = name;
     }
@@ -26,7 +26,7 @@ public enum DrinkType implements Displayable {
     public String getLabel() {
         return label;
     }
-    public static Optional<DrinkType> fromCode(int code) {
+    public static Optional<DrinkBase> fromCode(int code) {
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

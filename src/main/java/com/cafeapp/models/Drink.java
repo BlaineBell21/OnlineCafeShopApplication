@@ -1,7 +1,7 @@
 package com.cafeapp.models;
 
 import com.cafeapp.enums.DrinkSize;
-import com.cafeapp.enums.DrinkType;
+import com.cafeapp.enums.DrinkBase;
 import com.cafeapp.enums.ToppingType;
 
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class Drink extends MenuItem{
     private final DrinkSize size;
-    private final DrinkType type;
+    private final DrinkBase type;
     private ArrayList<ToppingType> toppings;
 
-    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkType type, ArrayList<ToppingType> toppings) {
+    public Drink(String itemLabel, double basePrice, DrinkSize size, DrinkBase type, ArrayList<ToppingType> toppings) {
         super(itemLabel, basePrice);
         this.size = size;
         this.type = type;
