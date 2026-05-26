@@ -31,10 +31,11 @@ public enum ToppingType {
     private final String label;
     private final String type;
 
-    ToppingType(int code, String name, String type) {
+
+    ToppingType(int code, String label, String type) {
         this.code = code;
         this.type = type;
-        this.label = name;
+        this.label = label;
     }
 
     public int getCode() {

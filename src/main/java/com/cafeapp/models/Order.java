@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Order {
     private ArrayList<String> drinks;
     private ArrayList<String> sides;
-    private ArrayList<Double> totals;
+    private ArrayList<Double> prices;
     private ArrayList<String> receiptInformation;
 
-    public Order(ArrayList<String> drinks, ArrayList<String> sides, ArrayList<Double> totals, ArrayList<String> receiptInformation) {
+    public Order(ArrayList<String> drinks, ArrayList<String> sides, ArrayList<Double> prices, ArrayList<String> receiptInformation) {
         this.drinks = drinks;
         this.sides = sides;
-        this.totals = totals;
+        this.prices = prices;
         this.receiptInformation = receiptInformation;
     }
 
@@ -31,12 +31,12 @@ public class Order {
         this.sides = sides;
     }
 
-    public ArrayList<Double> getTotals() {
-        return totals;
+    public ArrayList<Double> getPrices() {
+        return prices;
     }
 
-    public void setTotals(ArrayList<Double> totals) {
-        this.totals = totals;
+    public void setPrices(ArrayList<Double> totals) {
+        this.prices = totals;
     }
 
     public ArrayList<String> getReceiptInformation() {

@@ -2,6 +2,7 @@ package com.cafeapp.ui;
 
 
 import com.cafeapp.enums.menus.OrderScreenOption;
+import com.cafeapp.models.Drink;
 import com.cafeapp.utils.InputHelper;
 
 public class OrderScreen {
@@ -48,6 +49,7 @@ public class OrderScreen {
                     CheckoutScreen.checkout();
                     return;
                 case CANCEL_ORDER:
+                    DrinkBuilderScreen.getToppings().clear();
                     return;
             }
         }
