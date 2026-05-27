@@ -2,6 +2,7 @@ package com.cafeapp.ui;
 
 import com.cafeapp.enums.menus.OrderScreenOption;
 import com.cafeapp.models.Order;
+import com.cafeapp.services.CartService;
 import com.cafeapp.services.DrinkBuilderService;
 import com.cafeapp.services.SideService;
 import com.cafeapp.utils.InputHelper;
@@ -51,6 +52,8 @@ public class OrderScreen {
                 CheckoutScreen.checkout();
                 break;
             case VIEW_ORDER:
+                CartService.cartMainMenuUI();
+                break;
             case CANCEL_ORDER:
         }
     }

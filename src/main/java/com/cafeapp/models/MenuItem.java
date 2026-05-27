@@ -20,4 +20,9 @@ public class MenuItem {
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }

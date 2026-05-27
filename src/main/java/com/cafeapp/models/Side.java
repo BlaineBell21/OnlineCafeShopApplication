@@ -7,4 +7,24 @@ public class Side extends MenuItem{
 
     }
 
+    @Override
+    public String getItemLabel(){
+
+    }
+
+
+    @Override
+    public String toString() {
+
+        return String.format(
+                """
+                --------------------------------
+                Side: %s
+                Price: $%.2f
+                --------------------------------
+                """,
+                getItemLabel(),
+                getBasePrice()
+        );
+    }
 }
