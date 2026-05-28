@@ -1,8 +1,9 @@
 package com.cafeapp.services;
 
-import com.cafeapp.enums.DrinkSize;
-import com.cafeapp.enums.DrinkBase;
-import com.cafeapp.enums.ToppingType;
+import com.cafeapp.enums.drink.DrinkSize;
+import com.cafeapp.enums.drink.DrinkBase;
+import com.cafeapp.enums.topping.ToppingCategory;
+import com.cafeapp.enums.topping.ToppingType;
 import com.cafeapp.models.Drink;
 import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
@@ -123,9 +124,9 @@ public class DrinkBuilderService {
             }
         }
     }
-    public static void premiumToppingUI(){
+    public static void toppingUI(ToppingCategory category){
         for(ToppingType option : ToppingType.values()){
-            if (option.getType().equals("Premium")){
+            if (option.getCategory() == category){
                 System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
             }
         }
@@ -136,7 +137,8 @@ public class DrinkBuilderService {
     public static void premiumToppings(){
 
         while(true){
-            premiumToppingUI();
+            ToppingCategory category = ToppingCategory.PREMIUM;
+            toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice.trim()){
@@ -159,20 +161,11 @@ public class DrinkBuilderService {
         }
     }
 
-    public static void regularToppingUI(){
-        for(ToppingType option : ToppingType.values()){
-            if (option.getType().equals("Regular")){
-                System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
-            }
-        }
-        System.out.println("0) Finish");
-        System.out.println();
-    }
-
     public static void regularToppings(){
 
         while(true){
-            regularToppingUI();
+            ToppingCategory category = ToppingCategory.REGULAR;
+            toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice.trim()){
@@ -209,20 +202,12 @@ public class DrinkBuilderService {
             }
         }
     }
-    public static void boosterToppingUI(){
-        for(ToppingType option : ToppingType.values()){
-            if (option.getType().equals("Booster")){
-                System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
-            }
-        }
-        System.out.println("0) Finish");
-        System.out.println();
-    }
 
     public static void boosterToppings(){
 
         while(true){
-            boosterToppingUI();
+            ToppingCategory category = ToppingCategory.BOOSTER;
+            toppingUI(category);
             String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice.trim()){

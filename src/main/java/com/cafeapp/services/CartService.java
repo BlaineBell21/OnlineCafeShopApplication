@@ -6,7 +6,6 @@ import com.cafeapp.ui.OrderScreen;
 public class CartService {
 
     public static void cartMainMenuUI(){
-        Order order = OrderScreen.getOrder();
-        order.displayOrder();
+        OrderScreen.getOrder().getClass();
     }
 }

@@ -1,7 +1,9 @@
 package com.cafeapp.services;
 
-import com.cafeapp.enums.Side;
+import com.cafeapp.enums.drink.side.SideCategory;
+import com.cafeapp.enums.drink.side.SideType;
 import com.cafeapp.enums.menus.SideMenuOption;
+import com.cafeapp.models.Side;
 import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
@@ -10,12 +12,12 @@ import java.util.ArrayList;
 
 public class SideService {
 
-    private static ArrayList<Side> sides = new ArrayList<>();
+    private static ArrayList<SideType> sideTypes = new ArrayList<>();
 
     public static void addSideUI(){
         sideMainMenuDisplay();
-        for (Side side : sides) {
-            com.cafeapp.models.Side newSide = new com.cafeapp.models.Side(side.getLabel(), side.getPrice());
+        for (SideType sideType : sideTypes) {
+            Side newSide = new com.cafeapp.models.Side(sideType.getLabel(), sideType.getCategory().getPrice(), sideType.getCategory());
             OrderScreen.getOrder().addItem(newSide);
         }
     }
@@ -50,10 +52,10 @@ public class SideService {
         }
     }
 
-    public static void sidesUI(){
-        for(Side option : Side.values()){
-            if (option.getType().equals("Included")){
-                System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
+    public static void sidesUI(SideCategory sideCategory){
+        for(SideType option : SideType.values()){
+            if (option.getCategory() == sideCategory){
+                System.out.printf("%-1d ) %s - $%.2f%n", option.getCode(), option.getLabel(), option.getCategory().getPrice());
                 System.out.println(option.getDescription());
             }
         }
@@ -63,24 +65,25 @@ public class SideService {
 
     public static void complimentarySides(){
         while (true){
-            sidesUI();
+            SideCategory complimentarySides = SideCategory.COMPLIMENTARY;
+            sidesUI(complimentarySides);
             String selectedChoice = InputHelper.readStringInput("Enter the number of the side you want: ");
 
             switch(selectedChoice.trim()){
                 case "1":
-                    sides.add(Side.ORBIT_MACARON);
+                    sideTypes.add(SideType.ORBIT_MACARON);
                     break;
                 case "2":
-                    sides.add(Side.GALAXY_CAKE_POP);
+                    sideTypes.add(SideType.GALAXY_CAKE_POP);
                     break;
                 case "3":
-                    sides.add(Side.STARFALL_SCONE);
+                    sideTypes.add(SideType.STARFALL_SCONE);
                     break;
                 case "4":
-                    sides.add(Side.CRESCENT_MOON_CROISSANT);
+                    sideTypes.add(SideType.CRESCENT_MOON_CROISSANT);
                     break;
                 case "5":
-                    sides.add(Side.LUNAR_BLUEBERRY_MUFFIN);
+                    sideTypes.add(SideType.LUNAR_BLUEBERRY_MUFFIN);
                     break;
                 case "0":
                     System.out.println("Returning to previous menu");
@@ -92,27 +95,28 @@ public class SideService {
 
     public static void mainSidesDisplay(){
         while (true){
-            sidesUI();
+            SideCategory mainSides = SideCategory.MAIN;
+            sidesUI(mainSides);
             String selectedChoice = InputHelper.readStringInput("Enter the number of the side you want: ");
 
             switch(selectedChoice){
                 case "1":
-                    sides.add(Side.ECLIPSE_LAVA_CAKE);
+                    sideTypes.add(SideType.ECLIPSE_LAVA_CAKE);
                     break;
                 case "2":
-                    sides.add(Side.GALAXY_TIRAMISU);
+                    sideTypes.add(SideType.GALAXY_TIRAMISU);
                     break;
                 case "3":
-                    sides.add(Side.LUNAR_CHEESECAKE_SLICE);
+                    sideTypes.add(SideType.LUNAR_CHEESECAKE_SLICE);
                     break;
                 case "4":
-                    sides.add(Side.MILKY_WAY_PARFAIT);
+                    sideTypes.add(SideType.MILKY_WAY_PARFAIT);
                     break;
                 case "5":
-                    sides.add(Side.METEORITE_BROWNIE);
+                    sideTypes.add(SideType.METEORITE_BROWNIE);
                     break;
                 case "6":
-                    sides.add(Side.COSMIC_CINNAMON_ROLL);
+                    sideTypes.add(SideType.COSMIC_CINNAMON_ROLL);
                     break;
                 case "0":
                     System.out.println("Returning to previous menu");
@@ -120,7 +124,7 @@ public class SideService {
             }
         }
     }
-    public static ArrayList<Side> getSides(){
-        return sides;
+    public static ArrayList<SideType> getSides(){
+        return sideTypes;
     }
 }

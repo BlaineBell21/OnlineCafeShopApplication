@@ -1,6 +1,6 @@
 package com.cafeapp.models;
 
-public class MenuItem {
+abstract class MenuItem {
     private final String itemLabel;
     private double basePrice;
 
@@ -20,6 +20,8 @@ public class MenuItem {
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
+
+    abstract double calculatePrice();
 
     @Override
     public String toString() {

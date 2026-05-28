@@ -1,4 +1,4 @@
-package com.cafeapp.enums;
+package com.cafeapp.enums.drink;
 
 
 import com.cafeapp.interfaces.Displayable;
@@ -13,23 +13,25 @@ public enum DrinkSize implements Displayable {
 
     private final int code;
     private final double baseCost;
-    private final String label;
+    private final String size;
 
-    DrinkSize(int code, String drinkSize, double baseCost){
+    DrinkSize(int code, String size, double baseCost){
         this.code = code;
         this.baseCost = baseCost;
-        this.label = drinkSize;
+        this.size = size;
     }
 
     public int getCode() {
         return code;
     }
 
+    @Override
+    public String getLabel() {
+        return size;
+    }
+
     public double getBaseCost(){
         return baseCost;
-    }
-    public String getLabel(){
-        return label;
     }
 
     public static Optional<DrinkSize> fromCode(int code) {

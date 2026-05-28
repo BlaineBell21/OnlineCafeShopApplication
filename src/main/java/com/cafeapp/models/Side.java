@@ -1,17 +1,25 @@
 package com.cafeapp.models;
 
+import com.cafeapp.enums.drink.side.SideCategory;
+
+
 public class Side extends MenuItem{
 
-    public Side(String itemLabel, double basePrice) {
-        super(itemLabel, basePrice);
+    private final SideCategory category;
 
+    public Side(String itemLabel, double basePrice, SideCategory category) {
+        super(itemLabel, basePrice);
+        this.category = category;
     }
 
     @Override
-    public String getItemLabel(){
-
+    double calculatePrice() {
+        return category.getPrice();
     }
 
+    public SideCategory getCategory() {
+        return category;
+    }
 
     @Override
     public String toString() {

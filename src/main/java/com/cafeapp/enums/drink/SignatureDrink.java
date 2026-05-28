@@ -1,4 +1,4 @@
-package com.cafeapp.enums;
+package com.cafeapp.enums.drink;
 
 
 import java.util.ArrayList;
