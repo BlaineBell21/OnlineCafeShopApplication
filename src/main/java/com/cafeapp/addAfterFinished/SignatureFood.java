@@ -1,4 +1,4 @@
-package com.cafeapp.enums.drink;
+package com.cafeapp.addAfterFinished;
 
 //public enum SignatureFood implements Displayable {
 //}

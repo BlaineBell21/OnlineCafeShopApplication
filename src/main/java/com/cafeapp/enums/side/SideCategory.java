@@ -1,4 +1,4 @@
-package com.cafeapp.enums.drink.side;
+package com.cafeapp.enums.side;
 
 public enum SideCategory {
     COMPLIMENTARY(0),

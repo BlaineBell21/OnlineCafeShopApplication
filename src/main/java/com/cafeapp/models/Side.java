@@ -1,6 +1,6 @@
 package com.cafeapp.models;
 
-import com.cafeapp.enums.drink.side.SideCategory;
+import com.cafeapp.enums.side.SideCategory;
 
 
 public class Side extends MenuItem{

@@ -1,4 +1,4 @@
-package com.cafeapp.enums.drink.side;
+package com.cafeapp.enums.side;
 
 public enum SideType {
     ORBIT_MACARON(1, "Orbit Macaron", "Colorful assorted macarons inspired by planets.", SideCategory.COMPLIMENTARY),

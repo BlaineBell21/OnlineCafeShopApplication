@@ -8,7 +8,7 @@ import java.util.Optional;
 public enum OrderScreenOption implements Displayable {
 
     ADD_ITEM(1, "Add Drink"),
-    ADD_SEASONAL_DRINK(2, "Add Seasonal items"),
+    ADD_SEASONAL_ITEM(2, "Add Seasonal item"),
     ADD_SIDE(3, "Add Sides"),
     CHECKOUT(4, "Checkout"),
     VIEW_ORDER(5, "View Order"),

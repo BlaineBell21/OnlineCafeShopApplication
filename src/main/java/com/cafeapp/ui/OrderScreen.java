@@ -2,7 +2,6 @@ package com.cafeapp.ui;
 
 import com.cafeapp.enums.menus.OrderScreenOption;
 import com.cafeapp.models.Order;
-import com.cafeapp.services.CartService;
 import com.cafeapp.services.DrinkBuilderService;
 import com.cafeapp.services.SideService;
 import com.cafeapp.utils.InputHelper;
@@ -30,7 +29,7 @@ public class OrderScreen {
            selectedChoice = OrderScreenOption.fromCode(choice).orElse(null);
            orderScreenOptions(selectedChoice);
         }while (selectedChoice != OrderScreenOption.CANCEL_ORDER);
-        System.out.println("Canceling Order, returning to main menu.");
+        System.out.println("Returning to main menu.");
     }
 
     public static void orderScreenOptions(OrderScreenOption choice){
@@ -42,7 +41,7 @@ public class OrderScreen {
             case ADD_ITEM:
                DrinkBuilderService.addDrinkUI();
                 break;
-            case ADD_SEASONAL_DRINK:
+            case ADD_SEASONAL_ITEM:
                 //DrinkBuilderService.addSignatureDrink();
                 break;
             case ADD_SIDE:
@@ -50,9 +49,6 @@ public class OrderScreen {
                 break;
             case CHECKOUT:
                 CheckoutScreen.checkout();
-                break;
-            case VIEW_ORDER:
-                CartService.cartMainMenuUI();
                 break;
             case CANCEL_ORDER:
         }

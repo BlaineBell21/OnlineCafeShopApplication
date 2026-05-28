@@ -1,7 +1,7 @@
 package com.cafeapp.services;
 
-import com.cafeapp.enums.drink.side.SideCategory;
-import com.cafeapp.enums.drink.side.SideType;
+import com.cafeapp.enums.side.SideCategory;
+import com.cafeapp.enums.side.SideType;
 import com.cafeapp.enums.menus.SideMenuOption;
 import com.cafeapp.models.Side;
 import com.cafeapp.ui.OrderScreen;
