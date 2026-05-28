@@ -3,6 +3,7 @@ package com.cafeapp.services;
 import com.cafeapp.enums.drink.DrinkSize;
 import com.cafeapp.enums.drink.DrinkBase;
 import com.cafeapp.enums.drink.DrinkSpecialization;
+import com.cafeapp.enums.menus.Choice;
 import com.cafeapp.enums.topping.ToppingCategory;
 import com.cafeapp.enums.topping.ToppingType;
 import com.cafeapp.models.Drink;
@@ -21,6 +22,7 @@ public class DrinkBuilderService {
         DrinkSize size = drinkSizeDisplay();
         DrinkBase type = drinkBaseDisplay();
         toppingType();
+
         DrinkSpecialization specialization = itemSpecializationDisplay();
         Drink newDrink = new Drink(type.getLabel(),size.getBaseCost(),size,type, toppings, specialization);
         // creates a new drink object that stores the drink label (name),
@@ -119,23 +121,33 @@ public class DrinkBuilderService {
 
         while (true){
             chooseToppingTypeUI();
-            String selectedChoice = InputHelper.readStringInput("Enter in the number of your choice:");
-            switch(selectedChoice.trim()) {
-                case "1":
+            int selectedChoice = InputHelper.readIntInput("Enter in the number of your choice:");
+            switch(selectedChoice) {
+                case 1:
                     premiumToppings();
                     break;
-                case "2":
+                case 2:
                     regularToppings();
                     break;
-                case "3":
+                case 3:
                     boosterToppings();
                     break;
+                default:
+                    InputHelper.invalidInput();
+                    continue;
             }
-            System.out.println("Add more toppings?");
-            int choice = InputHelper.choice().getCode();
-            if (choice == 2){
-                //allows user choice to add different types of toppings otherwise exits topping menu
-                return;
+
+            while (true) {
+                System.out.println("Add more toppings?");
+                int choice = InputHelper.choice().getCode();
+                // 2 = no
+                // 1 = yes
+                if (choice == 1) {
+                    // allows user to add different types of toppings, otherwise exits topping menu
+                    break;
+                } else if (choice == 2) {
+                    return;
+                }
             }
         }
     }
@@ -156,24 +168,26 @@ public class DrinkBuilderService {
             ToppingCategory category = ToppingCategory.PREMIUM;
             //sets topping category to premium to loop through premium toppings in toppingUI
             toppingUI(category);
-            String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
+            int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
-            switch(selectedChoice.trim()){
-                case "1":
+            switch(selectedChoice){
+                case 1:
                     toppings.add(ToppingType.BOBA_PEARLS);
                     break;
-                case "2":
+                case 2:
                     toppings.add(ToppingType.CHEESE_FOAM);
                     break;
-                case "3":
+                case 3:
                     toppings.add(ToppingType.MATCHA_FOAM);
                     break;
-                case "4":
+                case 4:
                     toppings.add(ToppingType.OREO_COOKIE_CRUMBLE);
                     break;
-                case "0":
+                case 0:
                     System.out.println("Returning to previous menu");
                     return;
+                default:
+                    InputHelper.invalidInput();
             }
         }
     }
@@ -184,39 +198,41 @@ public class DrinkBuilderService {
             ToppingCategory category = ToppingCategory.REGULAR;
             //sets topping category to regular to loop through regular toppings in toppingUI
             toppingUI(category);
-            String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
+            int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
-            switch(selectedChoice.trim()){
-                case "1":
+            switch(selectedChoice){
+                case 1:
                     toppings.add(ToppingType.VANILLA_SYRUP);
                     break;
-                case "2":
+                case 2:
                     toppings.add(ToppingType.HAZELNUT_SYRUP);
                     break;
-                case "3":
+                case 3:
                     toppings.add(ToppingType.BROWN_SUGAR_SYRUP);
                     break;
-                case "4":
+                case 4:
                     toppings.add(ToppingType.LAVENDER_SYRUP);
                     break;
-                case "5":
+                case 5:
                     toppings.add(ToppingType.CARAMEL_SYRUP);
                     break;
-                case "6":
+                case 6:
                     toppings.add(ToppingType.PEPPERMINT_SYRUP);
                     break;
-                case "7":
+                case 7:
                     toppings.add(ToppingType.CINNAMON_POWDER);
                     break;
-                case "8":
+                case 8:
                     toppings.add(ToppingType.COCOA_POWDER);
                     break;
-                case "9":
+                case 9:
                     toppings.add(ToppingType.NUTMEG);
                     break;
-                case "0":
+                case 0:
                     System.out.println("Returning to previous menu");
                     return;
+                default:
+                    InputHelper.invalidInput();
             }
         }
     }
@@ -227,30 +243,32 @@ public class DrinkBuilderService {
             ToppingCategory category = ToppingCategory.BOOSTER;
             //sets topping category to booster to loop through booster toppings in toppingUI
             toppingUI(category);
-            String selectedChoice = InputHelper.readStringInput("Enter the number of one of the following toppings: ");
+            int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
-            switch(selectedChoice.trim()){
-                case "1":
+            switch(selectedChoice){
+                case 1:
                     toppings.add(ToppingType.EXTRA_ESPRESSO_SHOT);
                     break;
-                case "2":
+                case 2:
                     toppings.add(ToppingType.ENERGY_BOOST_SYRUP);
                     break;
-                case "3":
+                case 3:
                     toppings.add(ToppingType.BLONDE_ESPRESSO_SHOT);
                     break;
-                case "4":
+                case 4:
                     toppings.add(ToppingType.NITRO_SHOT);
                     break;
-                case "5":
+                case 5:
                     toppings.add(ToppingType.PROTEIN_FOAM);
                     break;
-                case "6":
+                case 6:
                     toppings.add(ToppingType.COLLAGEN_ADD_IN);
                     break;
-                case "0":
+                case 0:
                     System.out.println("Returning to previous menu");
                     return;
+                default:
+                    InputHelper.invalidInput();
             }
         }
     }
@@ -270,25 +288,51 @@ public class DrinkBuilderService {
             selectedChoice = DrinkSpecialization.fromCode(choice).orElse(null);
             if(selectedChoice != null){
                 drinkSpecializationOptions(selectedChoice);
+
+                Choice confirmSpecial;
+                System.out.println("Confirm your selection.");
+                ListUtils.genericMenuDisplay(Choice.values());
+                int selectedSpecial = InputHelper.readIntInput("Enter in the number of your choice: ");
+                confirmSpecial = Choice.fromCode(selectedSpecial).orElse(null);
+
+                if (confirmSpecial == Choice.NO) {
+                    continue;
+                } else if (confirmSpecial == null) {
+                    InputHelper.invalidInput();
+                    continue;
+                }
                 return selectedChoice;
             }
         }
     }
 
     public static void drinkSpecializationOptions(DrinkSpecialization choice){
-        switch (choice) {
-            case NONE -> {
-                System.out.println("Standard drink preparation with no specialty enhancements.");
+        StringBuilder specialDescription = new StringBuilder();
+            switch (choice) {
+                case NONE -> {
+                    specialDescription.append("You chose: ").append(DrinkSpecialization.NONE.getLabel());
+                    specialDescription.append("\n");
+                    specialDescription.append("Standard drink preparation with no specialty enhancements.\n");
+                    System.out.println(specialDescription);
+                }
+                case MOON_FOAM -> {
+                    specialDescription.append("You chose: ").append(DrinkSpecialization.MOON_FOAM.getLabel());
+                    specialDescription.append("\n");
+                    specialDescription.append("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.\n");
+                    System.out.println(specialDescription);
+                }
+                case GALAXY_SWIRL -> {
+                    specialDescription.append("You chose: ").append(DrinkSpecialization.GALAXY_SWIRL.getLabel());
+                    specialDescription.append("\n");
+                    specialDescription.append("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.\n");
+                    System.out.println(specialDescription);
+                }
+                case NITRO_INFUSION -> {
+                    specialDescription.append("You chose: ").append(DrinkSpecialization.NITRO_INFUSION.getLabel());
+                    specialDescription.append("\n");
+                    specialDescription.append("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.\n");
+                    System.out.println(specialDescription);
+                }
             }
-            case MOON_FOAM -> {
-                System.out.println("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.");
-            }
-            case GALAXY_SWIRL -> {
-                System.out.println("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.");
-            }
-            case NITRO_INFUSION -> {
-                System.out.println("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.");
-            }
-        }
     }
 }

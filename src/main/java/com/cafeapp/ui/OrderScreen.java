@@ -7,6 +7,8 @@ import com.cafeapp.services.SideService;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
 
+import java.io.IOException;
+
 
 public class OrderScreen {
     private static Order currentOrder;
@@ -21,7 +23,7 @@ public class OrderScreen {
         System.out.println();
     }
 
-    public static void orderScreenDisplay(){
+    public static void orderScreenDisplay() throws IOException {
         // creates new order
         currentOrder = new Order();
         orderScreen();
@@ -39,7 +41,7 @@ public class OrderScreen {
         System.out.println("Returning to main menu.");
     }
 
-    public static void orderScreenOptions(OrderScreenOption choice){
+    public static void orderScreenOptions(OrderScreenOption choice) throws IOException {
         if(choice == null){
             // if choice is null, says input is invalid and returns to previous screen
             System.out.println("Invalid Option. Please try again.");
@@ -62,7 +64,7 @@ public class OrderScreen {
                 CheckoutScreen.confirmOrderDisplay();
                 break;
             case CANCEL_ORDER:
-                CheckoutScreen.cancelOrder();
+                CheckoutScreen.clearOrder();
                 break;
         }
     }

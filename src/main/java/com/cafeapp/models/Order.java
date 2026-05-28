@@ -47,13 +47,36 @@ public class Order {
         }
         return totalAmountDue;
     }
-
     public void displayOrder(){
         for (MenuItem item : items){
             System.out.println(item.getItemLabel());
         }
     }
     public String toString(){
+        StringBuilder receipt = new StringBuilder();
 
+        receipt.append("""
+            ==================================
+                 MOONBEAM CAFE RECEIPT
+            ==================================
+            
+            """);
+        for(MenuItem item : items) {
+            receipt.append(item);
+            receipt.append("\n");
+        }
+        receipt.append("""
+            ----------------------------------
+            """);
+        receipt.append(
+                String.format(
+                        "Total: $%.2f%n",
+                        calculateTotalPrice()
+                )
+        );
+        receipt.append("""
+            ==================================
+            """);
+        return receipt.toString();
     }
 }

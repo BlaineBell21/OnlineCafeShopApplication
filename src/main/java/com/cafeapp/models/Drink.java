@@ -145,11 +145,13 @@ public class Drink extends MenuItem{
                 Type: %s
                 Toppings: %s
                 Specialization: %s
+                Total: $%.2f
                 """,
                 getSize(),
                 getType(),
                 getToppingFormat(),
-                getSpecialization()
+                getSpecialization(),
+                calculatePrice()
         );
     }
 

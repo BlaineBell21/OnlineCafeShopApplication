@@ -28,7 +28,7 @@ public class Side extends MenuItem{
                 """
                 --------------------------------
                 Side: %s
-                Price: $%.2f
+                Total: $%.2f
                 --------------------------------
                 """,
                 getItemLabel(),

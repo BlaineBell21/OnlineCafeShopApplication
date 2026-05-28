@@ -58,6 +58,6 @@ public class InputHelper {
     }
 
     public static void invalidInput(){
-        System.out.println("Invalid choice, try again.");
+        System.out.println("Invalid input, try again.");
     }
 }

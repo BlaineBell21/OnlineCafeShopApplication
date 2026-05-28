@@ -4,6 +4,8 @@ import com.cafeapp.enums.menus.MainMenuOption;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
 
+import java.io.IOException;
+
 
 public class HomeScreen {
     public static void welcomeScreen(){
@@ -15,7 +17,7 @@ public class HomeScreen {
         System.out.println();
     }
 
-    public static void homeScreenDisplay(){
+    public static void homeScreenDisplay() throws IOException {
         MainMenuOption selectedChoice;
         do {
             welcomeScreen();
@@ -27,9 +29,9 @@ public class HomeScreen {
         System.out.println("Thank you for ordering at MoonBeam Cafe");
     }
 
-    public static void homeScreenOptions(MainMenuOption choice){
+    public static void homeScreenOptions(MainMenuOption choice) throws IOException {
         if(choice == null){
-            System.out.println("Invalid Option. Please try again.");
+            InputHelper.invalidInput();
             return;
         }
 

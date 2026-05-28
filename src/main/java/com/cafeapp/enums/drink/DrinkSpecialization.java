@@ -16,7 +16,7 @@ public enum DrinkSpecialization implements Displayable {
     private final String description;
     private final String label;
 
-    DrinkSpecialization(int code, String description, String label) {
+    DrinkSpecialization(int code, String label, String description) {
         this.code = code;
         this.description = description;
         this.label = label;
