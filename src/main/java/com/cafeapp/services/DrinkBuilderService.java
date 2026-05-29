@@ -10,6 +10,7 @@ import com.cafeapp.models.Drink;
 import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
+import com.cafeapp.utils.UIHelper;
 
 import java.util.ArrayList;
 
@@ -111,10 +112,10 @@ public class DrinkBuilderService {
     }
 
     public static void chooseToppingTypeUI(){
-        System.out.println("Choose which premium, booster, or regular topping you'd like to add.\n" +
-                "1) Premium\n" +
-                "2) Regular\n" +
-                "3) Booster");
+        System.out.println("Select a topping category:");
+        System.out.println("1) Premium");
+        System.out.println("2) Regular");
+        System.out.println("3) Booster");
     }
 
     public static void toppingType(){
@@ -133,19 +134,16 @@ public class DrinkBuilderService {
                     boosterToppings();
                     break;
                 default:
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid Option. Please try again.");
                     continue;
             }
 
             while (true) {
-                System.out.println("Add more toppings?");
-                int choice = InputHelper.choice().getCode();
-                // 2 = no
-                // 1 = yes
-                if (choice == 1) {
-                    // allows user to add different types of toppings, otherwise exits topping menu
-                    break;
-                } else if (choice == 2) {
+                System.out.println("Add more toppings? (1 = Yes, 2 = No)");
+
+                int choice = InputHelper.readIntInput("Enter choice: ");
+
+                if (choice == 2) {
                     return;
                 }
             }
@@ -155,19 +153,18 @@ public class DrinkBuilderService {
         for(ToppingType option : ToppingType.values()){
             if (option.getCategory() == category){
                 // loops through premium, regular, or booster toppings based on which is inputted
-                System.out.printf("%-1d ) %s%n", option.getCode(), option.getLabel());
+                System.out.printf("   %d) %s%n", option.getCode(), option.getLabel());
             }
         }
-        System.out.println("0) Finish");
+        System.out.println("   0) Finish selection");
         System.out.println();
     }
 
     public static void premiumToppings(){
 
         while(true){
-            ToppingCategory category = ToppingCategory.PREMIUM;
+            toppingUI(ToppingCategory.PREMIUM);
             //sets topping category to premium to loop through premium toppings in toppingUI
-            toppingUI(category);
             int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice){
@@ -187,7 +184,7 @@ public class DrinkBuilderService {
                     System.out.println("Returning to previous menu");
                     return;
                 default:
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid Option. Please try again.");
             }
         }
     }
@@ -195,9 +192,8 @@ public class DrinkBuilderService {
     public static void regularToppings(){
 
         while(true){
-            ToppingCategory category = ToppingCategory.REGULAR;
+            toppingUI(ToppingCategory.REGULAR);
             //sets topping category to regular to loop through regular toppings in toppingUI
-            toppingUI(category);
             int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice){
@@ -232,7 +228,7 @@ public class DrinkBuilderService {
                     System.out.println("Returning to previous menu");
                     return;
                 default:
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid Option. Please try again.");
             }
         }
     }
@@ -240,9 +236,8 @@ public class DrinkBuilderService {
     public static void boosterToppings(){
 
         while(true){
-            ToppingCategory category = ToppingCategory.BOOSTER;
+            toppingUI(ToppingCategory.BOOSTER);
             //sets topping category to booster to loop through booster toppings in toppingUI
-            toppingUI(category);
             int selectedChoice = InputHelper.readIntInput("Enter the number of one of the following toppings: ");
 
             switch(selectedChoice){
@@ -268,7 +263,7 @@ public class DrinkBuilderService {
                     System.out.println("Returning to previous menu");
                     return;
                 default:
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid Option. Please try again.");
             }
         }
     }
@@ -298,7 +293,7 @@ public class DrinkBuilderService {
                 if (confirmSpecial == Choice.NO) {
                     continue;
                 } else if (confirmSpecial == null) {
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid option. Please try again.");
                     continue;
                 }
                 return selectedChoice;

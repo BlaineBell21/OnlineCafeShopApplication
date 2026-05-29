@@ -1,0 +1,13 @@
+==================================
+     MOONBEAM CAFE RECEIPT
+==================================
+
+Size: MEDIUM
+Type: Latte
+Toppings: Oreo Cookie Crumble, Protein Foam
+Specialization: Moon Foam
+Total: $12.50
+
+----------------------------------
+Total: $12.50
+==================================

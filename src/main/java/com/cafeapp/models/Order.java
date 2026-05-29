@@ -25,22 +25,16 @@ public class Order {
     public double calculateTotalPrice(){
         // calculates price of all of user's items in cart
         double totalAmountDue = 0;
-        for (MenuItem item : items){
-            if (item instanceof Drink drink){
-                totalAmountDue += drink.calculatePrice();
-            }
-        }
+
         for(MenuItem item : items){
-            if (item instanceof Side side){
-                totalAmountDue += side.calculatePrice();
-            }
+            totalAmountDue += item.calculatePrice();
         }
         return totalAmountDue;
     }
     public void displayOrder(){
         // displays all items in user's cart
         for (MenuItem item : items){
-            System.out.println(item.getItemLabel());
+            System.out.println(item);
         }
     }
     public String toString(){
@@ -54,7 +48,7 @@ public class Order {
             """);
         for(MenuItem item : items) {
             receipt.append(item);
-            receipt.append("\n");
+            receipt.append("\n\n");
         }
         receipt.append("""
             ----------------------------------

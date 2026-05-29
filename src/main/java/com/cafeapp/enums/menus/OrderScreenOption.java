@@ -11,7 +11,6 @@ public enum OrderScreenOption implements Displayable {
     ADD_SEASONAL_ITEM(2, "Add Seasonal item"),
     ADD_SIDE(3, "Add Sides"),
     CHECKOUT(4, "Checkout"),
-    VIEW_ORDER(5, "View Order"),
     CANCEL_ORDER(0, "Cancel Order");
 
     private final int code;

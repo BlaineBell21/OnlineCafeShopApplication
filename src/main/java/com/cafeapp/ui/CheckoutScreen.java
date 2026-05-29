@@ -20,18 +20,21 @@ public class CheckoutScreen {
         Choice selectedChoice;
         // stores user's choice
         do{
-            System.out.println("Confirm your order?");
+            System.out.println("🌙 Confirm your order?");
             items.displayOrder();
             confirmOrderUI();
             int choice = InputHelper.readIntInput("Enter in the number of your choice: ");
             selectedChoice = Choice.fromCode(choice).orElse(null);
             // validates whether the inputted choice exists, if not returns null
+            if (selectedChoice == null) {
+                System.out.println("Invalid option. Please try again.");
+                continue;
+            }
             if (selectedChoice == Choice.YES){
                 if (items.isEmpty() || items.calculateTotalPrice() <= 0){
                     // if cart is empty or total check out price is less than 0
                     // tells user to add drink and/or main dish
-                    System.out.println("In order to check out, you must add a drink or main dish.");
-                    System.out.println("Returning to previous menu.");
+                    System.out.println("You must add a drink or side before checkout.");
                     return;
                 } else {
                     FileUtils.receiptWriter(items);
@@ -45,7 +48,7 @@ public class CheckoutScreen {
                 }
             }
         } while (selectedChoice != Choice.NO);
-        System.out.println("Returning to previous menu");
+        System.out.println("↩ Returning to previous menu...");
     }
     public static void clearOrder(){
         items.clearOrder();

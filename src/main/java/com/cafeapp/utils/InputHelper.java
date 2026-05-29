@@ -26,7 +26,7 @@ public class InputHelper {
             if (selectedChoice != null) {
                 return selectedChoice;
             }
-            invalidInput();
+            UIHelper.printError("Invalid option. Please try again.");
         }
     }
     public static int readIntInput(String prompt){
@@ -41,9 +41,5 @@ public class InputHelper {
                 System.out.println("Please enter a whole number.");
             }
         }
-    }
-
-    public static void invalidInput(){
-        System.out.println("Invalid input, try again.");
     }
 }

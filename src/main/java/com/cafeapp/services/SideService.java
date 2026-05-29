@@ -7,6 +7,7 @@ import com.cafeapp.models.Side;
 import com.cafeapp.ui.OrderScreen;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
+import com.cafeapp.utils.UIHelper;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,7 @@ public class SideService {
                 sideMainMenuOptions(selectedChoice);
                 return;
             }
-            System.out.println("invalid option try again");
+            UIHelper.printError("Invalid Option. Please try again.");
         }
     }
 
@@ -61,9 +62,15 @@ public class SideService {
         for(SideType option : SideType.values()){
             if (option.getCategory() == sideCategory){
                 // cycles through sides based on inputted category
-                System.out.printf("%-1d ) %s - $%.2f%n", option.getCode(), option.getLabel(), option.getCategory().getPrice());
-                System.out.println(option.getDescription());
+                System.out.printf("   %d) %s - $%.2f%n",
+                        option.getCode(),
+                        option.getLabel(),
+                        option.getCategory().getPrice()
+                );
+                System.out.println("      ✨ " + option.getDescription());
                 // prints all sides and their descriptions
+                System.out.println();
+
             }
         }
         System.out.println("0) Finish");
@@ -75,7 +82,7 @@ public class SideService {
         while (true){
             SideCategory complimentarySides = SideCategory.COMPLIMENTARY;
             sidesUI(complimentarySides);
-            int selectedChoice = InputHelper.readIntInput("Enter the number of the side you want: ");
+            int selectedChoice = InputHelper.readIntInput("Select a side: ");
 
             switch(selectedChoice){
                 case 1:
@@ -84,9 +91,11 @@ public class SideService {
                 case 2:
                     sideTypes.add(SideType.GALAXY_CAKE_POP);
                     break;
-                case 3:
-                    System.out.println("Returning to previous menu");
+                case 0:
+                    UIHelper.printSuccess("Returning to previous menu");
                     return;
+                default:
+                    UIHelper.printError("Invalid Option. Please try again.");
             }
         }
     }
@@ -96,7 +105,7 @@ public class SideService {
         while (true){
             SideCategory mainSides = SideCategory.MAIN;
             sidesUI(mainSides);
-            int selectedChoice = InputHelper.readIntInput("Enter the number of the side you want: ");
+            int selectedChoice = InputHelper.readIntInput("Select a side: ");
 
             switch(selectedChoice){
                 case 1:
@@ -130,7 +139,7 @@ public class SideService {
                     System.out.println("Returning to previous menu");
                     return;
                 default:
-                    InputHelper.invalidInput();
+                    UIHelper.printError("Invalid option. Please try again.");
                     break;
             }
         }
