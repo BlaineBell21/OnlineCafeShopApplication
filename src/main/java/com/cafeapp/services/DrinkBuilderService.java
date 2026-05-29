@@ -8,6 +8,7 @@ import com.cafeapp.enums.drink.topping.ToppingCategory;
 import com.cafeapp.enums.drink.topping.ToppingType;
 import com.cafeapp.models.Drink;
 import com.cafeapp.ui.OrderScreen;
+import com.cafeapp.utils.Color;
 import com.cafeapp.utils.InputHelper;
 import com.cafeapp.utils.ListUtils;
 import com.cafeapp.utils.UIHelper;
@@ -309,32 +310,67 @@ public class DrinkBuilderService {
 
     public static void drinkSpecializationOptions(DrinkSpecialization choice){
         // prints specialization options
-        StringBuilder specialDescription = new StringBuilder();
+        UIHelper.printGradientHeader("Drink Specialization", "Cosmic enhancements for your beverage");
+
+        String title = "";
+        String description = "";
+        String effect = "";
+
         switch (choice) {
             case NONE -> {
-                specialDescription.append("You chose: ").append(DrinkSpecialization.NONE.getLabel());
-                specialDescription.append("\n");
-                specialDescription.append("Standard drink preparation with no specialty enhancements.\n");
-                System.out.println(specialDescription);
+                title = "Standard Preparation";
+                description = """
+                    Standard drink preparation with no
+                    specialty enhancements.
+                    """;
+
+                effect = "Balanced • Classic • Smooth";
             }
             case MOON_FOAM -> {
-                specialDescription.append("You chose: ").append(DrinkSpecialization.MOON_FOAM.getLabel());
-                specialDescription.append("\n");
-                specialDescription.append("A smooth layer of flavored cream foam that gives the drink a soft, cloud-like finish inspired by moonlight.\n");
-                System.out.println(specialDescription);
+                title = "Moon Foam ☾";
+                description = """
+                    A smooth layer of flavored cream foam
+                    that gives the drink a soft, cloud-like
+                    finish inspired by moonlight.
+                    """;
+
+                effect = "Creamy • Airy • Sweet";
             }
             case GALAXY_SWIRL -> {
-                specialDescription.append("You chose: ").append(DrinkSpecialization.GALAXY_SWIRL.getLabel());
-                specialDescription.append("\n");
-                specialDescription.append("A vibrant syrup swirl blended throughout the drink to create a colorful cosmic effect with extra sweetness.\n");
-                System.out.println(specialDescription);
+                title = "Galaxy Swirl ✦";
+                description = """
+                    A vibrant syrup swirl blended throughout
+                    the drink to create a colorful cosmic
+                    effect with extra sweetness.
+                    """;
+
+                effect = "Vibrant • Sweet • Colorful";
             }
             case NITRO_INFUSION -> {
-                specialDescription.append("You chose: ").append(DrinkSpecialization.NITRO_INFUSION.getLabel());
-                specialDescription.append("\n");
-                specialDescription.append("Infused with nitro for a creamy texture and velvety finish with a subtle sparkling sensation.\n");
-                System.out.println(specialDescription);
+                title = "Nitro Infusion ⚡";
+                description = """
+                    Infused with nitro for a creamy texture
+                    and velvety finish with a subtle
+                    sparkling sensation.
+                    """;
+
+                effect = "Velvety • Bold • Smooth";
             }
         }
+        System.out.println(Color.BOLD + "Selected Specialization:" + Color.RESET);
+        System.out.println(Color.CYAN + "➜ " + title + Color.RESET);
+
+        UIHelper.printDivider();
+
+        System.out.println(Color.YELLOW + "Description:" + Color.RESET);
+        System.out.println(description);
+
+        UIHelper.printSeparator();
+
+        System.out.println(Color.GREEN + "Flavor Profile:" + Color.RESET);
+        System.out.println("✧ " + effect);
+
+        UIHelper.printBorder();
+        System.out.println();
     }
 }

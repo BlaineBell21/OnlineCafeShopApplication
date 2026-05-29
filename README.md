@@ -61,32 +61,60 @@ As well as receipt generation and file writing functionality.
 ---
 
 ## 🧩 Project Structure
-com.cafeapp
+
+```text
+src/main/java
 │
-├── models
-│ ├── MenuItem
-│ ├── Drink
-│ ├── Side
-│ └── Order
+├── com.cafeapp
+│   │
+│   ├── application
+│   │   └── Main
+│   │
+│   ├── enums
+│   │   ├── drink
+│   │   ├── menus
+│   │   └── side
+│   │
+│   ├── interfaces
+│   │   └── Displayable
+│   │
+│   ├── models
+│   │   ├── Drink
+│   │   ├── MenuItem
+│   │   ├── Order
+│   │   ├── SeasonalDrinkModel
+│   │   └── Side
+│   │
+│   ├── services
+│   │   ├── DrinkBuilderService
+│   │   ├── SeasonalDrinkService
+│   │   └── SideService
+│   │
+│   ├── ui
+│   │   ├── CheckoutScreen
+│   │   ├── HomeScreen
+│   │   └── OrderScreen
+│   │
+│   └── utils
+│       ├── Color
+│       ├── DateUtils
+│       ├── FileUtils
+│       ├── InputHelper
+│       ├── ListUtils
+│       └── UIHelper
 │
-├── enums
-│ ├── DrinkSize
-│ ├── DrinkBase
-│ ├── DrinkSpecialization
-│ ├── ToppingType
-│ ├── ToppingCategory
-│ └── SideType
-│
-├── ui
-│ ├── OrderScreen
-│ ├── DrinkBuilderScreen
-│ ├── SideScreen
-│ └── CheckoutScreen
-│
-└── utils
-├── InputHelper
-├── ReceiptWriter
-└── DateUtils
+└── data
+    └── receipts
+```
+
+### 📦 Architecture Notes
+
+* `models` contains domain objects and business data
+* `services` contains business logic and builders
+* `ui` handles console rendering and interaction
+* `utils` contains reusable helper utilities
+* `enums` provides strongly typed menu configurations
+
 ## 📊 UML Diagram
 
 The UML diagram below represents the structure of the application and relationships between core classes.
@@ -96,23 +124,23 @@ The UML diagram below represents the structure of the application and relationsh
 - `Order` aggregates `MenuItem` objects
 - Enums define fixed configuration sets
 
-`src/main/assets/diagram.png`*
+![UML Diagram](src/main/assets/diagram.png)
 
 ---
 
 ## 📸 Screenshots
 
 ### 🏠 Main Menu
-`src/main/assets/mainMenuScreen.png`*
+![Main Menu](src/main/assets/mainMenuScreen.png)
 
 ### ☕ Drink Builder
-`src/main/assets/mainMenuScreen.png`*
+![Drink Builder](src/main/assets/drinkBuilderScreen.png)
 
 ### 🧾 Order Summary
-`src/main/assets/ReceiptUI.png`*
+![Order Summary](src/main/assets/ReceiptUI.png)
 
 ### 💳 Receipt Output
-src/main/assets/receiptOutput.png`*
+![Receipt Output](src/main/assets/receiptOutput.png)
 
 ---
 
