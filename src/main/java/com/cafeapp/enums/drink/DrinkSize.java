@@ -36,7 +36,7 @@ public enum DrinkSize implements Displayable {
     }
 
     public static Optional<DrinkSize> fromCode(int code) {
-        //takes in int input to check if it is a value that exists in the enums
+        // takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(option -> option.code == code)
                 .findFirst();

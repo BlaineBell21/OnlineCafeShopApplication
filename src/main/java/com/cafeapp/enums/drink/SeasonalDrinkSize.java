@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum SeasonalDrinkSize implements Displayable {
+    // contains seasonal drink size and cost values
     SEASONAL_SMALL(1,"Seasonal Small",2),
     SEASONAL_MEDIUM(2,"Seasonal Medium",2.50),
     SEASONAL_LARGE(3,"Seasonal Large",3);

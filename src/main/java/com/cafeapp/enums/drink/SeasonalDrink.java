@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum SeasonalDrink implements Displayable {
+    // contains set seasonal drinks
     PUMPKIN_STARDUST_LATTE(1,"Pumpkin Stardust Latte",
             "A warm spiced latte infused with pumpkin puree, cinnamon, and a light vanilla foam topping. " +
                       "Finished with a dusting of \"stardust\" nutmeg for a cozy autumn feel.", "Seasonal"),
@@ -44,6 +45,7 @@ public enum SeasonalDrink implements Displayable {
         return label;
     }
     public static Optional<SeasonalDrink> fromCode(int code) {
+        // takes in int input to check if it is a value that exists in the enums
         return Arrays.stream(values())
                 .filter(drink -> drink.code == code)
                 .findFirst();

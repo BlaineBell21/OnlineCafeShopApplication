@@ -68,6 +68,8 @@ public class Order {
         """);
         return receipt.toString();
     }
+
+    // removed color tags to properly print into txt file
     public String toReceiptString() {
         StringBuilder receipt = new StringBuilder();
 

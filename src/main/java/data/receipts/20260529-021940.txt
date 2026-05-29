@@ -1,0 +1,18 @@
+==================================
+     MOONBEAM CAFE RECEIPT
+==================================
+
+ITEMS:
+Size: MEDIUM
+Type: Black Tea
+Toppings: Nutmeg
+Specialization: Nitro Infusion
+$9.00
+
+
+----------------------------------
+TOTAL: $9.00
+==================================
+   Thank you for visiting MoonBeam
+==================================
+

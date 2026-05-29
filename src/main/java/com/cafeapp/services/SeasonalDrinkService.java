@@ -12,8 +12,11 @@ public class SeasonalDrinkService {
     public static void seasonalDrinkUI() {
         UIHelper.printGradientHeader("COSMIC SEASONS",  "Exclusive flavors drifting through the galaxy");
         SeasonalDrinkSize size = seasonalDrinkSizeDisplay();
+        // retrieves the selected cup size and stores for later use
         SeasonalDrink type = seasonalDrinkOptionDisplay();
+        // retrieves the selected type of drink and stores for later
         SeasonalDrinkModel newSeasonalDrink = new SeasonalDrinkModel(type.getLabel(), size.getBaseCost(),size, type);
+        //creates new seasonal drink object that stores the label, cost, size, and type of drink
         OrderScreen.getOrder().addItem(newSeasonalDrink);
     }
 
